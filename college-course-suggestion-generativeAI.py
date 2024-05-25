@@ -52,6 +52,7 @@ def main():
     Prompting is the process of providing a starting point or context to the Generative AI Model. 
     You can enter a sentence, phrase, or keywords into the text input below to prompt the model. 
     The model will then use this prompt to generate text content from the provided input.
+    \nTo get started, enter your details in the fields below. Once you've entered your details, click the 'Get Course Suggestions' button to generate text based on your input. You can experiment with different inputs to see how the generated content changes.
     """)
     st.markdown("---")
 
