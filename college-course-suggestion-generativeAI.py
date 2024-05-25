@@ -55,28 +55,32 @@ def main():
     """)
     st.markdown("---")
 
-    # User Input Section
-    st.subheader("User Inputs")
+    # Input prompts from the user
     hobby = st.text_input("What is your hobby?")
     favorite_subject = st.text_input("What is your favorite subject?")
     financial_budget = st.select_slider("Select your financial budget", options=["Low", "Medium", "High"])
     course_complexity = st.radio("Select the desired course complexity", options=["Beginner", "Intermediate", "Advanced"])
     country = st.text_input("Enter the country you want to study in:")
-    university = st.text_input("Enter the specific university (if any):")
+    university = st.text_input("Enter the prefer university (if any):")
 
-    st.markdown("---")
+    # Generate prompt based on user inputs
+    prompts = [
+        f"Hobby: {hobby}",
+        f"Favorite subject: {favorite_subject}",
+        f"Financial budget: {financial_budget}",
+        f"Course complexity: {course_complexity}",
+        f"Country: {country}",
+        f"University: {university}"
+    ]
 
-    # Generate Button
+    # Button to generate content
     if st.button("Get Course Suggestions"):
         if hobby and favorite_subject and country and university:
-            # Generate suggestions
-            generated_text = generate_content([hobby, favorite_subject, financial_budget, course_complexity, country, university])
-
-            # Display suggestions
+            generated_text = generate_content(prompts)
             st.subheader("College Course Suggestions:")
             st.write(generated_text)
         else:
-            st.warning("Please provide your hobby, favorite subject, financial budget, desired course complexity, country, and university.")
+            st.warning("Please provide your hobby, favorite subject, desired country, and university.")
 
 if __name__ == "__main__":
     main()
